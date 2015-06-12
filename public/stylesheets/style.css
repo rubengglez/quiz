@@ -12,3 +12,7 @@ nav span { margin: 0px 10px 0px 0px;}
 .figure__video{
 	display: none;
 }
+
+table{
+	width: 100%;
+}
