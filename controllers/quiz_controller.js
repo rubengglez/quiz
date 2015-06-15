@@ -21,7 +21,7 @@ exports.index = function(req, res){
 		});
 
 	}else{ // GET buscador de preguntas
-		models.Quiz.findAll({where: ["pregunta like ?", '%' + search.replace(/\s+/g, '%') + '%']})
+		models.Quiz.findAll({where: ["UPPER(pregunta) like ?", '%' + search.toUpperCase().replace(/\s+/g, '%') + '%']})
 		.then(function(quizes){
 			res.render('quizes/index', {quizes:quizes});
 		});
