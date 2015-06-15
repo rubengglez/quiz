@@ -16,3 +16,8 @@ nav span { margin: 0px 10px 0px 0px;}
 table{
 	width: 100%;
 }
+
+.separador{
+	max-width: 80%;
+	margin: 15px auto 0;
+}

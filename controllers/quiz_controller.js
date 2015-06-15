@@ -14,9 +14,18 @@ exports.load = function(req, res, next, quizId){
 };
 
 exports.index = function(req, res){
-	models.Quiz.findAll().then(function(quizes){
-		res.render('quizes/index', {quizes: quizes});
-	});
+	var search = req.query.search;
+	if ( search === undefined ) {
+		models.Quiz.findAll().then(function(quizes){
+			res.render('quizes/index', {quizes: quizes});
+		});
+
+	}else{ // GET buscador de preguntas
+		models.Quiz.findAll({where: ["pregunta like ?", '%' + search.replace(/\s+/g, '%') + '%']})
+		.then(function(quizes){
+			res.render('quizes/index', {quizes:quizes});
+		});
+	}
 };
 
 // GET /quizes/:id
