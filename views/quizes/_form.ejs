@@ -1,10 +1,22 @@
 <div>
 	<label for="preg" class="rem">Pregunta:</label>
-	<input type="text" id="preg" name="quiz[pregunta]" placeholder="<%= quiz.pregunta %>" /> 
+	<input type="text" id="preg" name="quiz[pregunta]" <% if (quiz.pregunta) { %> value="<%= quiz.pregunta %>" <% } %> placeholder="<%= quiz.pregunta %>" /> 
 </div>
 <div>
 	<label for="resp" class="rem">Respuesta:</label>
-	<input type="text" id="resp" name="quiz[respuesta]" placeholder="<%= quiz.respuesta %>" /> 
+	<input type="text" id="resp" name="quiz[respuesta]" <% if (quiz.respuesta) { %> value="<%= quiz.respuesta %>" <% } %> placeholder="<%= quiz.respuesta %>" /> 
 </div>
+<br>
+<div>
+	<label for="categoria">Categoría:</label>
+	<select name="quiz[tema]">
+	  <option value="otro" <% if (quiz.tema == "otro") { %> selected <% } %> >Otro</option>
+	  <option value="humanidades" <% if (quiz.tema == "humanidades") { %> selected <% } %> >Humanidades</option>
+	  <option value="ocio" <% if (quiz.tema == "ocio") { %> selected <% } %> >Ocio</option>
+	  <option value="ciencia" <% if (quiz.tema == "ciencia") { %> selected <% } %> >Ciencia</option>
+	  <option value="tecnologia" <% if (quiz.tema == "tecnologia") { %> selected <% } %> >Tecnología</option>
+	</select>
+</div>
+<br>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar" >
