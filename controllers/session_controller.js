@@ -33,6 +33,9 @@ exports.create = function(req, res){
 		// La sesión se define por la existencia de: req.session.user
 		req.session.user = {id:user.id, username: user.username};
 
+		// Guardamos valor de creación de la cookie
+		req.session.fechaCreacion = new Date();
+
 		// Redirección al path anterior a login
 		res.redirect(req.session.redir.toString());
 	});
@@ -41,5 +44,6 @@ exports.create = function(req, res){
 // DELETE /logout   -- Destruir sesion
 exports.destroy = function(req, res){
 	delete req.session.user;
+	delete req.session.fechaCreacion;
 	res.redirect(req.session.redir.toString()); // redirect a path anterior a login
 }

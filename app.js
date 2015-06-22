@@ -31,6 +31,17 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Añadir auto-logout
+app.use(function(req, res, next){
+    if ( req.session.fechaCreacion ){
+        if ( (new Date() - new Date(req.session.fechaCreacion)) > 120000 ){
+            delete req.session.user;
+            delete req.session.fechaCreacion;
+        }
+    }
+    next();        
+});
+
 
 // Helpers dinámicos
 app.use(function(req, res, next){
