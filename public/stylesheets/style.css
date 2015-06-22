@@ -33,3 +33,19 @@ nav span{
 .right{
 	float: right;
 }
+
+.red{
+	color: red;
+}
+
+ul{
+	max-width: 600px;
+	font-size: 17px;
+	margin: auto;
+}
+
+li{
+	list-style: circle;
+	text-align: left;
+	margin-bottom: 15px;
+}
